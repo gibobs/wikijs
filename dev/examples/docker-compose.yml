@@ -1,29 +1,15 @@
 version: "3"
 services:
-
-  db:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_DB: wiki
-      POSTGRES_PASSWORD: wikijsrocks
-      POSTGRES_USER: wikijs
-    logging:
-      driver: "none"
-    restart: unless-stopped
-    volumes:
-      - db-data:/var/lib/postgresql/data
-
   wiki:
-    image: requarks/wiki:2
-    depends_on:
-      - db
+    image: 057062899615.dkr.ecr.eu-central-1.amazonaws.com/dev-wikijs:latest
     environment:
       DB_TYPE: postgres
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: wikijs
-      DB_PASS: wikijsrocks
-      DB_NAME: wiki
+      DB_HOST: gibobs-dev.cl0dx0kdgakl.eu-central-1.rds.amazonaws.com
+      DB_PORT: 25061
+      DB_USER: root
+      DB_PASS: eApvyNXaajyFqFSWTL6Y5U5TeFwD2q
+      DB_NAME: wiki2
+      DB_SSL: true
     restart: unless-stopped
     ports:
       - "80:3000"

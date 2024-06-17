@@ -9,6 +9,10 @@ db:
   db: $(DB_NAME)
   storage: $(DB_FILEPATH)
   ssl: $(DB_SSL)
+  sslOptions:
+    auto: false
+    rejectUnauthorized: false
+    ca: eu-central-1-bundle.pem
 ssl:
   enabled: $(SSL_ACTIVE)
   port: 3443
